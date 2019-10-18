@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Page 1</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="mainpage.css">
+
+</head>
+
+<body>
+    <div>
+        <header id="up">
+            <div>
+                <img src="bpb.jpg" alt="Boyko Boev" width="300px" height="60px">
+
+            </div>
+        </header>
+        <div id="info">
+            <div>
+                <h3>ТЕХНИЧЕСКИ УНИВЕРСИТЕТ ГАБРОВО</h3>
+                <img src="tugab.jpg" alt="tugab" id="tugab">
+            </div>
+            <div id="myinfo">
+                <h3>Бойко Петев Боев</h3>
+                <p>Спец.КСТ</p>
+                <p>Фак.№21635436</p>
+                <p>ПРОГРАМИРАНЕ В ИНТЕРНЕТ СРЕДА</p>
+            </div>
+        </div>
+        <div id="backgroundDiv">
+            <div id="main">
+                <div class="topnav">
+                    <a class="active" href="mainpage.html">Home</a>
+                    <a href="page1.html" id="mainButton">1</a>
+                    <a href="page2.html">2</a>
+                    <a href="page3.html">3</a>
+                    <a href="page4.html">4</a>
+                </div>
+                <div class="animation">
+                    <p>Информация</p>
+                    <div style="margin-top: 70px">
+                       <p>Първата анимация има за цел запознаване с canvas, <br> 
+                        начина на свързване на HTML елемент с JS код, принтиране на текст с определена големина и шрифт и използване на координатната система на canvas.<br>
+                          На екрана се принтира текст в  
+                         първата колона, която започва от левия край.<br> При запълване на колоната принтирането се измества по ос 
+                         х и така продължава <br> 
+                        до запълване на цялото поле след което програмата спира. </p> 
+                    </div>
+                    
+                </div>
+                <div class="animation">
+                    <p>Анимация</p>
+                    <div>
+                        <canvas id="animation1" width="825" height="300"></canvas>
+                        <script>
+                            function animation() {
+                                let ctx = document.getElementById("animation1").getContext("2d");
+                                ctx.font = '15px Arial';
+                                let x = 15;
+                                let y = 10;
+                                let spdX = 50;
+                                let spdY = 15;
+                                setInterval(update, 100);
+                                function update() {
+                                    let sym = 'Boyko';
+                                    y += spdY;
+                                    if (y % 2 == 0) {
+                                        sym = 'Boev';
+                                    }
+                                    else {
+                                        sym = 'Boyko';
+                                    }
+                                    if (y > 285) {
+                                        x += spdX;
+                                        y = 25;
+                                    }
+                                    if (x > 765) {
+                                        return
+                                    }
+                                    ctx.fillText(sym, x, y);
+                                }
+                            }
+                            animation();
+                        </script>
+                    </div>
+                </div>
+                <div class="animation">
+                    <p>Код</p>
+                    <div class="scrollDiv">
+                       <img src="one.jpg" alt="CODE">
+                        </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+                <p>Изработил:</p><h3>Бойко Петев Боев</h3>
+        </footer>
+    </div>
+</body>
+
+</html>

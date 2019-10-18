@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Page 4</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="mainpage.css">
+
+</head>
+
+<body>
+    <div>
+        <header id="up">
+            <div>
+                <img src="bpb.jpg" alt="Boyko Boev" width="300px" height="60px">
+            </div>
+        </header>
+        <div id="info">
+            <div>
+                <h3>ТЕХНИЧЕСКИ УНИВЕРСИТЕТ ГАБРОВО</h3>
+                <img src="tugab.jpg" alt="tugab" id="tugab">
+            </div>
+            <div id="myinfo">
+                <h3>Бойко Петев Боев</h3>
+                <p>Спец.КСТ</p>
+                <p>Фак.№21635436</p>
+                <p>ПРОГРАМИРАНЕ В ИНТЕРНЕТ СРЕДА</p>
+            </div>
+        </div>
+        <div id="backgroundDiv">
+            <div id="main">
+                <div class="topnav">
+                    <a class="active" href="mainpage.html">Home</a>
+                    <a href="page1.html">1</a>
+                    <a href="page2.html">2</a>
+                    <a href="page3.html">3</a>
+                    <a href="page4.html" id="mainButton">4</a>
+                </div>
+                <div class="animation">
+                    <p>Информация</p>
+                    <div style="margin-top: 35px">
+                            <p>Четвърта анимация използва по-сложен JS код и работи с няколко изображения на веднъж, <br>
+                                като всяко изображение изпълнява различно движение. <br>
+                                Като комбинация от изображенията и тяхното движение се получава 
+                                2D анимация наподобяваща битка. 
+                                Такива анимации се използват в интернет игрите.</p>
+                    </div>
+                    <div>
+                        <img src="enemy.png" alt="E" id="enemy" width="111" height="129">
+                        <img src="normandy.png" alt="F" id="normandy" width="150" height="150">
+                        <img src="fire.png" alt="boom" id="fire" width="150" height="150">
+                    </div>
+                </div>
+                <div class="animation">
+
+                    <p>Анимация</p>
+                    <canvas id="animation2" width="825" height="300"></canvas>
+                    <script>
+                        const c = document.getElementById('animation2');
+                        const ctx = c.getContext("2d");
+
+                        let image1 = document.getElementById("enemy");
+                        let image2 = document.getElementById("normandy");
+                        let image3 = document.getElementById("fire");
+
+                        let enemy = {};
+                        enemy.image = image1;
+                        enemy.x = 100;
+                        enemy.y = 100;
+                        enemy.newX = 1;
+                        enemy.newY = 1;
+                        enemy.ship = false;
+
+                        let enemy2 = {};
+                        enemy2.image = image1;
+                        enemy2.x = 90;
+                        enemy2.y = 5;
+                        enemy2.newX = 0;
+                        enemy2.newY = 1;
+                        enemy2.ship = false;
+
+                        let friendly = {};
+                        friendly.image = image2;
+                        friendly.x = 600;
+                        friendly.y = 100;
+                        friendly.newX = 0;
+                        friendly.newY = 1;
+                        friendly.ship = true;
+
+                        let friendly2 = {};
+                        friendly2.image = image2;
+                        friendly2.x = 900;
+                        friendly2.y = 180;
+                        friendly2.newX = -5;
+                        friendly2.newY = 0;
+                        friendly2.ship = false;
+
+                        let fire = {}
+                        fire.image = image3;
+                        fire.x = 1000;
+                        fire.y = 180;
+                        fire.newX = -5;
+                        fire.newY = 0;
+
+                        setInterval(update, 5);
+
+                        function update() {
+                            ctx.clearRect(0, 0, 825, 300);
+                            newPosition(enemy);
+                            newPosition(enemy2);
+                            newPosition(friendly);
+
+                        }
+                        function effects(object) {
+                            object.x += object.newX;
+                            object.y += object.newY;
+                            ctx.drawImage(object.image, object.x, object.y, 100, 118);
+                        }
+                        function effects2(object) {
+                            object.x += object.newX;
+                            object.y += object.newY;
+                            ctx.drawImage(object.image, object.x, object.y, 100, 118);
+                        }
+                        function newPosition(object) {
+                            object.x += object.newX;
+                            object.y += object.newY;
+                            if (object.y >= 180 || object.y <= 0) {
+                                object.newY = -(object.newY);
+                            }
+                            if (object.x <= 0 || object.x >= 525) {
+                                object.newX = -(object.newX);
+                            }
+                            if (object.ship) {
+                                effects(fire);
+                                if (object.y == 100) {
+                                    fire.x = 600;
+                                    fire.y = 100;
+                                }
+                                effects2(fire);
+                                // effects(fire);
+                                // if(object.y == 1){
+                                //     friendly2.x = 900;
+                                //     friendly2.y = 180;
+                                //     fire.x = 990;
+                                //     fire.y = 180;
+                                // }
+                            }
+                            ctx.drawImage(object.image, object.x, object.y, 100, 118);
+                        }
+                    </script>
+
+                </div>
+                <div class="animation">
+                    <p>Код</p>
+                    <div class="scrollDiv">
+                            <img src="four.jpg" alt="CODE">
+                        </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+                <p>Изработил:</p><h3>Бойко Петев Боев</h3>
+        </footer>
+    </div>
+</body>
+
+</html>

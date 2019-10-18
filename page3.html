@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Page 3</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="mainpage.css">
+
+</head>
+
+<body>
+    <div>
+        <header id="up">
+            <div>
+                <img src="bpb.jpg" alt="Boyko Boev" width="300px" height="60px">
+
+            </div>
+        </header>
+        <div id="info">
+                <div>
+                    <h3>ТЕХНИЧЕСКИ УНИВЕРСИТЕТ ГАБРОВО</h3>
+                    <img src="tugab.jpg" alt="tugab" id="tugab">
+                </div>
+                <div id="myinfo">
+                    <h3>Бойко Петев Боев</h3>
+                    <p>Спец.КСТ</p>
+                    <p>Фак.№21635436</p>
+                    <p>ПРОГРАМИРАНЕ В ИНТЕРНЕТ СРЕДА</p>
+                </div>
+            </div>
+        <div id="backgroundDiv">
+            <div id="main">
+                <div class="topnav">
+                    <a class="active" href="mainpage.html">Home</a>
+                    <a href="page1.html">1</a>
+                    <a href="page2.html">2</a>
+                    <a href="page3.html" id="mainButton">3</a>
+                    <a href="page4.html">4</a>
+                </div>
+                <div class="animation">
+                    <p>Информация</p>
+                    <div style="margin-top: 70px">
+                            <p>Трета анимация ни запознава с вкарване на изображение в canvas полето, <br>
+                                както и изчистване
+                                на предишни принтирани елементи, което създава усещане за движение. 
+                            Изображението се движи в координатите на canvas полето и има зададена големина, <br> скорост и посока.</p>
+                    </div>
+                </div>
+                <div class="animation">
+                    
+                        <p>Анимация</p>
+                        <canvas id="animation1" width="825" height="300"></canvas>
+                        <script>
+                            const c = document.getElementById("animation1");
+                            const ctx = c.getContext("2d");
+                            ctx.font = '10px Arial';
+                            let x = 100;
+                            let y = 100;
+                            let newX = 1;
+                            let newY = 2;
+                            const image = document.getElementById("tugab");
+                            setInterval(update, 20);
+                            function update() {
+                                x += newX;
+                                y += newY;
+                                if(y >= 220 || y <= 0) {
+                                    newY = -newY;
+                                }
+                                if(x <= 0 || x >= 745){
+                                    newX = -newX;
+                                }
+                                ctx.clearRect(0, 0, 825, 300);
+                                ctx.drawImage(image, x, y, 80, 80);
+                            }
+
+                        </script>
+                    
+                </div>
+                <div class="animation">
+                    <p>Код</p>
+                    <div class="scrollDiv">
+                            <img src="three.jpg" alt="CODE">
+                        </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+                <p>Изработил:</p><h3>Бойко Петев Боев</h3>
+        </footer>
+    </div>
+</body>
+
+</html>
